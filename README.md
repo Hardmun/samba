@@ -494,46 +494,6 @@
 | `date_contract`   | `string` | (or_3)   | Дата договора рекламодателя                      |
 | `uuid_contract`   | `string` | (or_3)   | Уникальный идентификатор договора рекламодателя  |
 
-
-
-**Назначение:** Создание рекламной кампании.
-
-**Метод:** `POST`
-
-**URL:** `/rk`
-
-**Параметры JSON:**
-
-- `RK_ID` (string)*: Номер рекламной кампании.
-- `AdvName` (string)*: Наименование рекламодателя.
-- `AdvINN` (string)*: ИНН рекламодателя.
-- `AdvKPP` (string)*: КПП рекламодателя.
-- `BegDate` (string)*: Дата начала РК (формат: `dd.mm.yyyy`).
-- `EndDate` (string)*: Дата окончания РК (формат: `dd.mm.yyyy`).
-- `LastAdvName` (string): Наименование конечного рекламодателя.
-- `LastAdvINN` (string): ИНН конечного рекламодателя.
-- `LastAdvKPP` (string): КПП конечного рекламодателя.
-- `LastAdvAgrNumber` (string): Номер договора конечного рекламодателя.
-- `LastAdvAgrDate` (string): Дата договора конечного рекламодателя.
-
-**Пример запроса:**
-
-```json
-{
-    "RK_ID": "12345",
-    "AdvName": "Sample Advertiser",
-    "AdvINN": "7701234567",
-    "AdvKPP": "770101001",
-    "BegDate": "01.01.2024",
-    "EndDate": "31.12.2024",
-    "LastAdvName": "ООО Конечный Рекламодатель",
-    "LastAdvINN": "7707654321",
-    "LastAdvKPP": "770701001",
-    "LastAdvAgrNumber": "Д-12345",
-    "LastAdvAgrDate": "01.01.2024"
-}
-```
-
 **Пример ответа:**
 
 ```json
