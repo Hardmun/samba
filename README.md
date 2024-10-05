@@ -560,7 +560,8 @@
 
 ```json
 {
-    "rk_id": "У191994",
+    "uuid": "c833b7d2-831a-11ef-816c-0050568a4702",
+    "rk_id": "У191997",
     "inn_contractor": "3526019521",
     "kpp_contractor": "352601001",
     "date_start": "20241001",
@@ -576,13 +577,13 @@
 
 ```json
 {
-    "status": "error",
-    "message": "РК уже существует",
+    "status": "ok",
+    "message": "РК обновлена",
     "result": {
-        "rk_id": "У191994",
-        "uuid": "95e85794-8285-11ef-816c-0050568a4702",
+        "rk_id": "У191997",
+        "uuid": "c833b7d2-831a-11ef-816c-0050568a4702",
         "uuid_brand": "8e73927f-8c97-4737-b99b-f4139c3f9a80",
-        "name_brand": "My test brand NIKE",
+        "name_brand": "NIKE JUST DO IT",
         "inn_contractor": "3526019521",
         "kpp_contractor": "352601001",
         "name_contractor": "ТОРНАДО ООО",
