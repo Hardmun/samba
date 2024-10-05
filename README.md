@@ -610,9 +610,9 @@
 
 | Parameter    | Type     | Required | Description                          |
 | ------------ | -------- | -------- | ------------------------------------ |
-| `date_start` | `string` |          | Уникальный идентификатор РК          |
-| `date_end`   | `string` |          | Наименование РК                      |
-| `date`       | `string` |          | Идентификатор РК в SAMBA             |
+| `date_start` | `string` | *(or)    | Уникальный идентификатор РК          |
+| `date_end`   | `string` | *(or)    | Наименование РК                      |
+| `date`       | `string` | *(or)    | Идентификатор РК в SAMBA             |
 | `number`     | `string` |          | Внутренний номер РК в 1С             |
 | `uuid_rk`    | `string` |          | ИНН юр. лица РК                      |
 | `rk_id`      | `string` |          | КПП юр. лица РК                      |
