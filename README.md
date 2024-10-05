@@ -598,31 +598,51 @@
 
 ---
 
-### 5. PO
+### 6. Счет на оплату покупателю (PO)
 
-**Назначение:** Получить данные о PO (заказах).
+### 6.1 **Cписок счетов на оплату покупателю**
 
 **Метод:** `GET`
 
 **URL:** `/po`
 
-**Параметры JSON:** Нет.
+**Параметры запроса:**
 
-**Пример ответа:**
+| Parameter    | Type     | Required | Description                          |
+| ------------ | -------- | -------- | ------------------------------------ |
+| `date_start` | `string` |          | Уникальный идентификатор РК          |
+| `date_end`   | `string` |          | Наименование РК                      |
+| `date`       | `string` |          | Идентификатор РК в SAMBA             |
+| `number`     | `string` |          | Внутренний номер РК в 1С             |
+| `uuid_rk`    | `string` |          | ИНН юр. лица РК                      |
+| `rk_id`      | `string` |          | КПП юр. лица РК                      |
+| `numberMF`   | `string` |          | Уникальный идентификатор юр. лица РК |
+
+**Пример ответа JSON:**
 
 ```json
 {
     "status": "ok",
-    "message": null,
+    "message": "seccess",
     "result": [
         {
-            "uuid": "7399e00d-37e7-4eef-b87a-d16b7d421155",
-            "number": "УЛУ080366/01",
-            "date": "2024-03-07T14:37:55",
-            "amount": 348183.61,
-            "uuid_rk": "c10d0693-291d-4542-b1c8-293458b6fa98",
-            "rk_id": "SAMBA|Nabiullin|Mar - 2024",
-            "numberMF": "У081095"
+            "uuid": "95e85794-8285-11ef-816c-0050568a4702",
+            "name": "SAMBA|TORNADO|Oct - 2024",
+            "rk_id": "У191994",
+            "numberMF": "У085450",
+            "name_brand": "NIKE JUST DO IT",
+            "uuid_brand": "8e73927f-8c97-4737-b99b-f4139c3f9a80",
+            "name_contractor": "ТОРНАДО ООО",
+            "inn_contractor": "3526019521",
+            "kpp_contractor": "352601001",
+            "uuid_contractor": "69f2faf8-7a57-11ef-816b-005056b27e80",
+            "name_finaladv": "«ЛИДКОМ ИНВЕСТМЕНТС ЛИМИТЕД»",
+            "inn_finaladv": "9909369754",
+            "kpp_finaladv": "774751001",
+            "uuid_finaladv": "8e6796de-585d-11ed-b75a-005056995bef",
+            "number_contract": "№ 135/19",
+            "date_contract": "2019-10-01T00:00:00",
+            "uuid_contract": "e93cfac2-585d-11ed-b75a-005056995bef"
         }
     ]
 }
