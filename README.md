@@ -647,3 +647,60 @@
     ]
 }
 ```
+
+### 6.2 **Создать счет на оплату покупателю**
+
+**Метод:** `POST`
+
+**URL:** `/po`
+
+**Параметры JSON:**
+
+| Parameter         | Type     | Required | Description                                      |
+| ----------------- | -------- | -------- | ------------------------------------------------ |
+| `rk_id`           | `string` | *        | Номер РК в SAMBA                                 |
+| `date_start`      | `string` | *        | Дата начала РК                                   |
+| `date_end`        | `string` | *        | Дата окончания РК                                |
+| `inn_contractor`  | `string` | * (or_1) | ИНН юр.лица РК                                   |
+| `kpp_contractor`  | `string` |          | КПП юр.лица РК                                   |
+| `uuid_contractor` | `string` | * (or_1) | Уникальный идентификатор юр.лица РК              |
+| `inn_finaladv`    | `string` | (or_2)   | ИНН конечного рекламодателя                      |
+| `kpp_finaladv`    | `string` |          | КПП конечного рекламодателя                      |
+| `uuid_finaladv`   | `string` | (or_2)   | Уникальный идентификатор конечного рекламодателя |
+| `number_contract` | `string` | (or_3)   | Номер договора рекламодателя                     |
+| `date_contract`   | `string` | (or_3)   | Дата договора рекламодателя                      |
+| `uuid_contract`   | `string` | (or_3)   | Уникальный идентификатор договора рекламодателя  |
+
+**Пример запроса JSON:**
+
+```json
+{
+    "number": "TEST PO #11",
+    "date": "20241008",
+    "rk_id": "У191994",
+    "amount": 1000
+}
+```
+
+**Пример ответа JSON:**
+
+```json
+{
+    "status": "error",
+    "message": "РК уже существует",
+    "result": {
+        "rk_id": "У191994",
+        "uuid": "95e85794-8285-11ef-816c-0050568a4702",
+        "uuid_brand": "8e73927f-8c97-4737-b99b-f4139c3f9a80",
+        "name_brand": "My test brand NIKE",
+        "inn_contractor": "3526019521",
+        "kpp_contractor": "352601001",
+        "name_contractor": "ТОРНАДО ООО",
+        "inn_finaladv": "9909369754",
+        "kpp_finaladv": "774751001",
+        "name_finaladv": "«ЛИДКОМ ИНВЕСТМЕНТС ЛИМИТЕД»",
+        "number_contract": "№ 135/19",
+        "date_contract": "2019-10-01T00:00:00"
+    }
+}
+```
