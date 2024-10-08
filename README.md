@@ -608,47 +608,70 @@
 
 **Параметры запроса:**
 
-| Parameter    | Type     | Required | Description                          |
-| ------------ | -------- | -------- | ------------------------------------ |
-| `date_start` | `string` | *(or)    | Уникальный идентификатор РК          |
-| `date_end`   | `string` | *(or)    | Наименование РК                      |
-| `date`       | `string` | *(or)    | Идентификатор РК в SAMBA             |
-| `number`     | `string` |          | Внутренний номер РК в 1С             |
-| `uuid_rk`    | `string` |          | ИНН юр. лица РК                      |
-| `rk_id`      | `string` |          | КПП юр. лица РК                      |
-| `numberMF`   | `string` |          | Уникальный идентификатор юр. лица РК |
+| Parameter    | Type     | Required | Description                    |
+| ------------ | -------- | -------- | ------------------------------ |
+| `date_start` | `string` |          | Период начала                  |
+| `date_end`   | `string` |          | Период окончания               |
+| `date`       | `string` |          | Дата счета                     |
+| `uuid`       | `string` |          | Уникальный идентификатор счета |
+| `number`     | `string` |          | Номер счета в 1С               |
+| `uuid_rk`    | `string` |          | Уникальный идентификатор РК    |
+| `rk_id`      | `string` |          | Номер РК в SAMBA               |
+| `numberMF`   | `string` |          | Внутренний номер РК в 1С       |
 
 **Пример ответа JSON:**
 
 ```json
 {
     "status": "ok",
-    "message": "seccess",
+    "message": null,
     "result": [
         {
-            "uuid": "95e85794-8285-11ef-816c-0050568a4702",
-            "name": "SAMBA|TORNADO|Oct - 2024",
-            "rk_id": "У191994",
-            "numberMF": "У085450",
-            "name_brand": "NIKE JUST DO IT",
-            "uuid_brand": "8e73927f-8c97-4737-b99b-f4139c3f9a80",
-            "name_contractor": "ТОРНАДО ООО",
-            "inn_contractor": "3526019521",
-            "kpp_contractor": "352601001",
-            "uuid_contractor": "69f2faf8-7a57-11ef-816b-005056b27e80",
-            "name_finaladv": "«ЛИДКОМ ИНВЕСТМЕНТС ЛИМИТЕД»",
-            "inn_finaladv": "9909369754",
-            "kpp_finaladv": "774751001",
-            "uuid_finaladv": "8e6796de-585d-11ed-b75a-005056995bef",
-            "number_contract": "№ 135/19",
-            "date_contract": "2019-10-01T00:00:00",
-            "uuid_contract": "e93cfac2-585d-11ed-b75a-005056995bef"
+            "uuid": "75cfdd86-c090-4ed8-b7f5-ee05a51b7404",
+            "number": "УЛУ082118/02",
+            "date": "2024-05-29T16:26:29",
+            "amount": 19729.97,
+            "uuid_rk": "1fb38b2a-1daa-11ef-8168-005056b27e80",
+            "rk_id": "",
+            "numberMF": "У082118"
         }
     ]
 }
 ```
 
-### 6.2 **Создать счет на оплату покупателю**
+### 6.2 **Печатная форма существующего счета на оплату покупателю**
+
+**Метод:** `GET`
+
+**URL:** `/files/po`
+
+**Параметры запроса:**
+
+| Parameter | Type     | Required | Description                    |
+| --------- | -------- | -------- | ------------------------------ |
+| `number`  | `string` | * (or)   | Номер счета в 1С               |
+| `date`    | `string` | * (or)   | Дата счета                     |
+| `uuid`    | `string` | * (or)   | Уникальный идентификатор счета |
+
+**Параметры ответа JSON:**
+
+| Parameter | Type     | Required | Description                         |
+| --------- | -------- | -------- | ----------------------------------- |
+| `status`  | `string` |          | Статус ответа 1С                    |
+| `message` | `string` |          | Сообщение                           |
+| `result`  | `string` |          | Binary data encoded in Base64 (PDF) |
+
+**Пример ответа JSON:**
+
+```json
+{
+    "status": "ok",
+    "message": null,
+    "result": "JVBERi0xLjcKJeLjz9MKMSAwIG9iago8PAovRmlsdGVyIC9GbGF0ZURlY29kZQov\r\nTGVuZ3RoIDIgMCBSCi9MZW5ndGgxIDQ2MjQwCi9MZW5ndGgyIDAKL0xlbmd0aDMg\r\nMAo+PgpzdHJlYW0KeJztvQt8VMX1OD4z97F333ffm+xm9yabLI8NBBIgBKLZQMJD\r\nHokhBIJECEmAQCAhCSK+iFYEIxVqq63aKlrfj7qEAAG0UqS21VL9VmtbW4W21Gor\r\nSltKWyWb/5m59242qP339/t//v/P7//5yGbuPTN37jzOOXPOmTMzF4QRQi"
+}
+```
+
+### 6.3 **Создать счет на оплату покупателю**
 
 **Метод:** `POST`
 
@@ -656,20 +679,13 @@
 
 **Параметры JSON:**
 
-| Parameter         | Type     | Required | Description                                      |
-| ----------------- | -------- | -------- | ------------------------------------------------ |
-| `rk_id`           | `string` | *        | Номер РК в SAMBA                                 |
-| `date_start`      | `string` | *        | Дата начала РК                                   |
-| `date_end`        | `string` | *        | Дата окончания РК                                |
-| `inn_contractor`  | `string` | * (or_1) | ИНН юр.лица РК                                   |
-| `kpp_contractor`  | `string` |          | КПП юр.лица РК                                   |
-| `uuid_contractor` | `string` | * (or_1) | Уникальный идентификатор юр.лица РК              |
-| `inn_finaladv`    | `string` | (or_2)   | ИНН конечного рекламодателя                      |
-| `kpp_finaladv`    | `string` |          | КПП конечного рекламодателя                      |
-| `uuid_finaladv`   | `string` | (or_2)   | Уникальный идентификатор конечного рекламодателя |
-| `number_contract` | `string` | (or_3)   | Номер договора рекламодателя                     |
-| `date_contract`   | `string` | (or_3)   | Дата договора рекламодателя                      |
-| `uuid_contract`   | `string` | (or_3)   | Уникальный идентификатор договора рекламодателя  |
+| Parameter | Type     | Required | Description                 |
+| --------- | -------- | -------- | --------------------------- |
+| `number`  | `string` |          | Номер счета в 1С            |
+| `date`    | `string` |          | Дата счета                  |
+| `rk_id`   | `string` | * (or)   | Номер РК в SAMBA            |
+| `rk_uuid` | `string` | * (or)   | Уникальный идентификатор РК |
+| `amount`  | `string` | *        | Сумма счета                 |
 
 **Пример запроса JSON:**
 
@@ -686,21 +702,57 @@
 
 ```json
 {
-    "status": "error",
-    "message": "РК уже существует",
+    "status": "ok",
+    "message": "Счет на оплату покупателю успешно создан",
     "result": {
-        "rk_id": "У191994",
-        "uuid": "95e85794-8285-11ef-816c-0050568a4702",
-        "uuid_brand": "8e73927f-8c97-4737-b99b-f4139c3f9a80",
-        "name_brand": "My test brand NIKE",
-        "inn_contractor": "3526019521",
-        "kpp_contractor": "352601001",
-        "name_contractor": "ТОРНАДО ООО",
-        "inn_finaladv": "9909369754",
-        "kpp_finaladv": "774751001",
-        "name_finaladv": "«ЛИДКОМ ИНВЕСТМЕНТС ЛИМИТЕД»",
-        "number_contract": "№ 135/19",
-        "date_contract": "2019-10-01T00:00:00"
-    }
+        "uuid": "860c7845-8566-11ef-816c-0050568a4702",
+        "number": "УЛУ085450/02",
+        "date": "2024-10-08T14:14:47",
+        "po_file": ""
+        }
+}
+```
+
+### 6.4 **Обновить счет на оплату покупателю**
+
+**Метод:** `PUT`
+
+**URL:** `/po`
+
+**Параметры JSON:**
+
+| Parameter | Type     | Required | Description                         |
+| --------- | -------- | -------- | ----------------------------------- |
+| `uuid`    | `string` |          | Уникальный идентификатор счета в 1С |
+| `number`  | `string` |          | Номер счета в 1С                    |
+| `date`    | `string` |          | Дата счета                          |
+| `rk_id`   | `string` | * (or)   | Номер РК в SAMBA                    |
+| `rk_uuid` | `string` | * (or)   | Уникальный идентификатор РК         |
+| `amount`  | `string` | *        | Сумма счета                         |
+
+**Пример запроса JSON:**
+
+```json
+{
+    "uuid": "",
+    "number": "TEST PO #11",
+    "date": "20241008",
+    "rk_id": "У191994",
+    "amount": 1000
+}
+```
+
+**Пример ответа JSON:**
+
+```json
+{
+    "status": "ok",
+    "message": "Счет на оплату покупателю обновлен",
+    "result": {
+        "uuid": "860c7845-8566-11ef-816c-0050568a4702",
+        "number": "УЛУ085450/02",
+        "date": "2024-10-08T14:14:47",
+        "po_file": ""
+        }
 }
 ```

@@ -20,31 +20,34 @@ type jsonStruct struct {
 
 func main() {
 	newRequest := jsonStruct{
-		Uuid:   "805da498-83f7-11ef-816c-0050568a4702",
+		Uuid:   "860c7845-8566-11ef-816c-0050568a4702",
 		Number: "TEST PO #11",
 		Date:   "20241008",
 		Rk_id:  "У191994",
-		Amount: 15000,
+		Amount: 16000,
 	}
 
 	jsonRequest, err := json.Marshal(newRequest)
 	if err != nil {
 		fmt.Errorf(err.Error())
+		return
 	}
 
 	sendRequest, err := http.NewRequest(http.MethodPut, "https://1cplatform.mitcoms.ru/Dev/U_MediaFinance_for_testing/hs/samba/po",
 		bytes.NewBuffer(jsonRequest))
 	if err != nil {
 		fmt.Errorf(err.Error())
+		return
 	}
 	sendRequest.SetBasicAuth("user1c", "123")
 	sendRequest.Header.Set("Content-Type", "application/json")
 
-	client1c := &http.Client{}
+	client1c := http.Client{}
 
 	resp, respErr := client1c.Do(sendRequest)
 	if respErr != nil {
 		fmt.Errorf(respErr.Error())
+		return
 	}
 
 	fmt.Println(resp.Status)
@@ -53,18 +56,29 @@ func main() {
 	jFinal, errR := io.ReadAll(resp.Body)
 	if errR != nil {
 		fmt.Errorf(errR.Error())
+		return
 	}
 
 	var finalStruct interface{}
 	errMarh := json.Unmarshal(jFinal, &finalStruct)
-	if errMarh != nil{
+	if errMarh != nil {
 		fmt.Errorf(errMarh.Error())
+		return
+	}
+
+	if resp.StatusCode != 200 {
+		fmt.Errorf("%s", resp.StatusCode)
+		if finalStruct !=nil {
+			fmt.Println(finalStruct)
+		}
+		return
 	}
 
 	base64Data := finalStruct.(map[string]interface{})["result"].(map[string]interface{})["po_file"].(string)
 	pdfData, pdfErr := base64.StdEncoding.DecodeString(base64Data)
-	if pdfErr != nil{
+	if pdfErr != nil {
 		fmt.Errorf(pdfErr.Error())
+		return
 	}
 	os.WriteFile("./test.pdf", pdfData, os.ModePerm)
 }
