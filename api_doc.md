@@ -652,7 +652,7 @@
 | `number`  | `string` | * (or)   | Номер счета в 1С               |
 | `date`    | `string` | * (or)   | Дата счета                     |
 | `uuid`    | `string` | * (or)   | Уникальный идентификатор счета |
-| `ext`     | `string` |          | pdf, docx, xlsx                |
+| `ext`     | `string` |          | pdf, docx, xlsx (pdf-default)  |
 
 **Параметры ответа JSON:**
 
