@@ -652,14 +652,18 @@
 | `number`  | `string` | * (or)   | Номер счета в 1С               |
 | `date`    | `string` | * (or)   | Дата счета                     |
 | `uuid`    | `string` | * (or)   | Уникальный идентификатор счета |
+| `ext`     | `string` |          | pdf, docx, xlsx                |
 
 **Параметры ответа JSON:**
 
-| Parameter | Type     | Required | Description                         |
-| --------- | -------- | -------- | ----------------------------------- |
-| `status`  | `string` |          | Статус ответа 1С                    |
-| `message` | `string` |          | Сообщение                           |
-| `result`  | `string` |          | Binary data encoded in Base64 (PDF) |
+| Parameter | Type     | Required | Description          |
+| --------- | -------- | -------- | -------------------- |
+| `status`  | `string` |          | Статус ответа 1С     |
+| `message` | `string` |          | Сообщение            |
+| `result`  | 'struct' |          |                      |
+| `name`    | `string` |          | Имя файла            |
+| `ext`     | `string` |          | Расширение           |
+| `data`    | `string` |          | Binary data (base64) |
 
 **Пример ответа JSON:**
 
@@ -667,7 +671,11 @@
 {
     "status": "ok",
     "message": null,
-    "result": "JVBERi0xLjcKJeLjz9MKMSAwIG9iago8PAovRmlsdGVyIC9GbGF0ZURlY29kZQov\r\nTGVuZ3RoIDIgMCBSCi9MZW5ndGgxIDQ2MjQwCi9MZW5ndGgyIDAKL0xlbmd0aDMg\r\nMAo+PgpzdHJlYW0KeJztvQt8VMX1OD4z97F333ffm+xm9yabLI8NBBIgBKLZQMJD\r\nHokhBIJECEmAQCAhCSK+iFYEIxVqq63aKlrfj7qEAAG0UqS21VL9VmtbW4W21Gor\r\nSltKWyWb/5m59242qP339/t//v/P7//5yGbuPTN37jzOOXPOmTMzF4QRQi"
+    "result": {
+        "name": "Счет УСУ082753/10 от 09.10.2024.pdf",
+        "ext": "pdf",
+        "data": "JVBERi0xLjcKJeLjz9MKMSAwIG9iago8PAovRmlsdGVyIC9GbGF0ZURlY29k"
+    }
 }
 ```
 
@@ -694,7 +702,7 @@
     "number": "TEST PO #11",
     "date": "20241008",
     "rk_id": "У191994",
-    "amount": 1000
+    "amount": 60000
 }
 ```
 
@@ -705,11 +713,12 @@
     "status": "ok",
     "message": "Счет на оплату покупателю успешно создан",
     "result": {
-        "uuid": "860c7845-8566-11ef-816c-0050568a4702",
-        "number": "УЛУ085450/02",
-        "date": "2024-10-08T14:14:47",
-        "po_file": ""
-        }
+        "uuid": "59fed96e-8646-11ef-816c-0050568a4702",
+        "number": "УЛУ085454/05",
+        "date": "2024-10-09T16:57:01",
+        "amount": 60000,
+        "vat": 10000
+    }
 }
 ```
 
@@ -738,7 +747,7 @@
     "number": "TEST PO #11",
     "date": "20241008",
     "rk_id": "У191994",
-    "amount": 1000
+    "amount": 60000
 }
 ```
 
@@ -747,12 +756,13 @@
 ```json
 {
     "status": "ok",
-    "message": "Счет на оплату покупателю обновлен",
+    "message": "Счет на оплату покупателю успешно создан",
     "result": {
-        "uuid": "860c7845-8566-11ef-816c-0050568a4702",
-        "number": "УЛУ085450/02",
-        "date": "2024-10-08T14:14:47",
-        "po_file": ""
-        }
+        "uuid": "59fed96e-8646-11ef-816c-0050568a4702",
+        "number": "УЛУ085454/05",
+        "date": "2024-10-09T16:57:01",
+        "amount": 60000,
+        "vat": 10000
+    }
 }
 ```

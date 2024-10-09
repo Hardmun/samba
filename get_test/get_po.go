@@ -20,8 +20,11 @@ func main() {
 
 	baseURL := "https://1cplatform.mitcoms.ru/Dev/U_MediaFinance_for_testing/hs/samba/files/po"
 
+	ext := "docx";
+
 	urlParams := url.Values{}
 	urlParams.Add("uuid", "860c7845-8566-11ef-816c-0050568a4702")
+	urlParams.Add("ext", ext)
 	fullURL := fmt.Sprintf("%s?%s", baseURL, urlParams.Encode())
 
 	request, err = http.NewRequest(http.MethodGet, fullURL, nil)
@@ -58,12 +61,12 @@ func main() {
 		return
 	}
 
-	bs64 := respJson.(map[string]interface{})["result"].(string)
+	bs64 := respJson.(map[string]interface{})["result"].(map[string]interface{})["data"].(string)
 	readBody, err = base64.StdEncoding.DecodeString(bs64)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 	
-	os.WriteFile("./test_get.pdf", readBody, os.ModePerm)
+	os.WriteFile(fmt.Sprintf("./test_get.%s", ext), readBody, os.ModePerm)
 }
