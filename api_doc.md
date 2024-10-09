@@ -481,8 +481,8 @@
 | Parameter         | Type     | Required | Description                                      |
 | ----------------- | -------- | -------- | ------------------------------------------------ |
 | `rk_id`           | `string` | *        | Номер РК в SAMBA                                 |
-| `date_start`      | `string` | *        | Дата начала РК                                   |
-| `date_end`        | `string` | *        | Дата окончания РК                                |
+| `date_start`      | `string` |          | Дата начала РК                                   |
+| `date_end`        | `string` |          | Дата окончания РК                                |
 | `inn_contractor`  | `string` | * (or_1) | ИНН юр.лица РК                                   |
 | `kpp_contractor`  | `string` |          | КПП юр.лица РК                                   |
 | `uuid_contractor` | `string` | * (or_1) | Уникальный идентификатор юр.лица РК              |
