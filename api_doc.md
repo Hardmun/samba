@@ -808,7 +808,9 @@
 }
 ```
 
-### 6.6 **Оплата по счету покупателю**
+### 7. Оплаты и акты
+
+### 7.1 **Оплата по счету покупателю**
 
 **Метод:** `GET`
 
@@ -860,6 +862,114 @@
             "number_po": "УЛУ080367/01",
             "date_po": "2024-03-07T14:28:13"
         }
+    ]
+}
+```
+### 7.2 **Акты по рекламным кампаниям**
+
+**Метод:** `GET`
+
+**URL:** `/acts/rk`
+
+**Параметры JSON:**
+
+| Parameter | Type     | Required | Description                 |
+| --------- | -------- | -------- | --------------------------- |
+| `uuid`    | `string` | (or)     | Уникальный идентификатор РК |
+| `rk_id`   | `string` | (or)     | Идентификатор РК в SAMBA    |
+
+**Параметры ответа JSON:**
+
+| Parameter           | Type     | Required | Description                   |
+| ------------------- | -------- | -------- | ----------------------------- |
+| `uuid_rk`           | `string` |          | Уникальный идентификатор РК   |
+| `placements_amount` | `number` |          | Сумма размещений РК           |
+| `acts_amount`       | `number` |          | Сумма актов по размещениям РК |
+
+**Пример ответа JSON:**
+
+```json
+{
+    "status": "ok",
+    "message": null,
+    "result": [
+        {
+            "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
+            "placements_amount": 436704.38,
+            "acts_amount": 218352.19
+        }
+    ]
+}
+```
+
+### 7.3 **Детализация актов по рекламным кампаниям**
+
+**Метод:** `GET`
+
+**URL:** `/acts/rk/details`
+
+**Параметры JSON:**
+
+| Parameter | Type     | Required | Description                 |
+| --------- | -------- | -------- | --------------------------- |
+| `uuid`    | `string` | (or)     | Уникальный идентификатор РК |
+| `rk_id`   | `string` | (or)     | Идентификатор РК в SAMBA    |
+
+**Параметры ответа JSON:**
+
+| Parameter           | Type     | Required | Description                 |
+| ------------------- | -------- | -------- | --------------------------- |
+| `uuid_rk`           | `string` |          | Уникальный идентификатор РК |
+| `placements`        | `string` |          | Размещение                  |
+| `placements_amount` | `number` |          | Сумма по размещению         |
+
+| Parameter     | Type     | Required | Description                 |
+| ------------- | -------- | -------- | --------------------------- |
+| `uuid_rk`     | `string` |          | Уникальный идентификатор РК |
+| `placements`  | `string` |          | Размещение                  |
+| `document`    | `string` |          | Документ                    |
+| `acts_amount` | `number` |          | Сумма акта по размещению    |
+
+
+**Пример ответа JSON:**
+
+```json
+{
+    "status": "ok",
+    "message": null,
+    "result": [
+        [
+            {
+                "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
+                "placements": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
+                "placements_amount": 358709.16
+            },
+            {
+                "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
+                "placements": "{081f755a-25ed-42cb-bdb2-a9faec51a725}",
+                "placements_amount": 77995.22
+            }
+        ],
+        [
+            {
+                "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
+                "placements": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
+                "document": "Реализация товаров и услуг УМ0711/0001 от 07.11.2024 14:55:08",
+                "acts_amount": 179354.58
+            },
+            {
+                "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
+                "placements": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
+                "document": "Реализация товаров и услуг УМ3009/0204 от 30.09.2024 0:00:00",
+                "acts_amount": 179354.58
+            },
+            {
+                "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
+                "placements": "{081f755a-25ed-42cb-bdb2-a9faec51a725}",
+                "document": "Реализация товаров и услуг УМ3108/0329 от 31.08.2024 0:00:00",
+                "acts_amount": 38997.61
+            }
+        ]
     ]
 }
 ```
