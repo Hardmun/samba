@@ -941,33 +941,33 @@
         [
             {
                 "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
-                "placements": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
-                "placements_amount": 358709.16
+                "placement": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
+                "placement_amount": 358709.16
             },
             {
                 "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
-                "placements": "{081f755a-25ed-42cb-bdb2-a9faec51a725}",
-                "placements_amount": 77995.22
+                "placement": "{081f755a-25ed-42cb-bdb2-a9faec51a725}",
+                "placement_amount": 77995.22
             }
         ],
         [
             {
                 "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
-                "placements": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
+                "placement": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
                 "document": "Реализация товаров и услуг УМ0711/0001 от 07.11.2024 14:55:08",
-                "acts_amount": 179354.58
+                "act_amount": 179354.58
             },
             {
                 "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
-                "placements": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
+                "placement": "{8e9a83af-fe7e-4d4d-8642-ca6f01a395be}",
                 "document": "Реализация товаров и услуг УМ3009/0204 от 30.09.2024 0:00:00",
-                "acts_amount": 179354.58
+                "act_amount": 179354.58
             },
             {
                 "uuid_rk": "62d2dda1-69fe-11ef-816a-005056b27e80",
-                "placements": "{081f755a-25ed-42cb-bdb2-a9faec51a725}",
+                "placement": "{081f755a-25ed-42cb-bdb2-a9faec51a725}",
                 "document": "Реализация товаров и услуг УМ3108/0329 от 31.08.2024 0:00:00",
-                "acts_amount": 38997.61
+                "act_amount": 38997.61
             }
         ]
     ]
