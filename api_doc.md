@@ -609,16 +609,17 @@
 
 **Параметры запроса:**
 
-| Parameter    | Type     | Required | Description                    |
-| ------------ | -------- | -------- | ------------------------------ |
-| `date_start` | `string` |          | Период начала                  |
-| `date_end`   | `string` |          | Период окончания               |
-| `date`       | `string` |          | Дата счета                     |
-| `uuid`       | `string` |          | Уникальный идентификатор счета |
-| `number`     | `string` |          | Номер счета в 1С               |
-| `uuid_rk`    | `string` |          | Уникальный идентификатор РК    |
-| `rk_id`      | `string` |          | Номер РК в SAMBA               |
-| `numberMF`   | `string` |          | Внутренний номер РК в 1С       |
+| Parameter    | Type      | Required | Description                    |
+| ------------ | --------- | -------- | ------------------------------ |
+| `date_start` | `string`  |          | Период начала                  |
+| `date_end`   | `string`  |          | Период окончания               |
+| `date`       | `string`  |          | Дата счета                     |
+| `advance`    | `boolean` |          | Счет на аванс                  |
+| `uuid`       | `string`  |          | Уникальный идентификатор счета |
+| `number`     | `string`  |          | Номер счета в 1С               |
+| `uuid_rk`    | `string`  |          | Уникальный идентификатор РК    |
+| `rk_id`      | `string`  |          | Номер РК в SAMBA               |
+| `numberMF`   | `string`  |          | Внутренний номер РК в 1С       |
 
 **Пример ответа JSON:**
 
@@ -631,6 +632,7 @@
       "uuid": "75cfdd86-c090-4ed8-b7f5-ee05a51b7404",
       "number": "УЛУ082118/02",
       "date": "2024-05-29T16:26:29",
+      "advance": true,
       "amount": 19729.97,
       "uuid_rk": "1fb38b2a-1daa-11ef-8168-005056b27e80",
       "rk_id": "",
