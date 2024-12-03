@@ -479,20 +479,21 @@
 
 **Параметры JSON:**
 
-| Parameter         | Type     | Required  | Description                                      |
-| ----------------- | -------- | --------- | ------------------------------------------------ |
-| `rk_id`           | `string` | \*        | Номер РК в SAMBA                                 |
-| `date_start`      | `string` |           | Дата начала РК                                   |
-| `date_end`        | `string` |           | Дата окончания РК                                |
-| `inn_contractor`  | `string` | \* (or_1) | ИНН юр.лица РК                                   |
-| `kpp_contractor`  | `string` |           | КПП юр.лица РК                                   |
-| `uuid_contractor` | `string` | \* (or_1) | Уникальный идентификатор юр.лица РК              |
-| `inn_finaladv`    | `string` | (or_2)    | ИНН конечного рекламодателя                      |
-| `kpp_finaladv`    | `string` |           | КПП конечного рекламодателя                      |
-| `uuid_finaladv`   | `string` | (or_2)    | Уникальный идентификатор конечного рекламодателя |
-| `number_contract` | `string` | (or_3)    | Номер договора рекламодателя                     |
-| `date_contract`   | `string` | (or_3)    | Дата договора рекламодателя                      |
-| `uuid_contract`   | `string` | (or_3)    | Уникальный идентификатор договора рекламодателя  |
+| Parameter         | Type      | Required  | Description                                      |
+| ----------------- | --------- | --------- | ------------------------------------------------ |
+| `rk_id`           | `string`  | \*        | Номер РК в SAMBA                                 |
+| `date_start`      | `string`  |           | Дата начала РК                                   |
+| `date_end`        | `string`  |           | Дата окончания РК                                |
+| `advance`         | `boolean` |           | Признак аванса                                   |
+| `inn_contractor`  | `string`  | \* (or_1) | ИНН юр.лица РК                                   |
+| `kpp_contractor`  | `string`  |           | КПП юр.лица РК                                   |
+| `uuid_contractor` | `string`  | \* (or_1) | Уникальный идентификатор юр.лица РК              |
+| `inn_finaladv`    | `string`  | (or_2)    | ИНН конечного рекламодателя                      |
+| `kpp_finaladv`    | `string`  |           | КПП конечного рекламодателя                      |
+| `uuid_finaladv`   | `string`  | (or_2)    | Уникальный идентификатор конечного рекламодателя |
+| `number_contract` | `string`  | (or_3)    | Номер договора рекламодателя                     |
+| `date_contract`   | `string`  | (or_3)    | Дата договора рекламодателя                      |
+| `uuid_contract`   | `string`  | (or_3)    | Уникальный идентификатор договора рекламодателя  |
 
 **Пример запроса JSON:**
 
@@ -541,21 +542,22 @@
 
 **Параметры JSON:**
 
-| Parameter         | Type     | Required | Description                                      |
-| ----------------- | -------- | -------- | ------------------------------------------------ |
-| `uuid`            | `string` | \*(or)   | Уникальный номер РК                              |
-| `rk_id`           | `string` | \*(or)   | Номер РК в SAMBA                                 |
-| `date_start`      | `string` |          | Дата начала РК                                   |
-| `date_end`        | `string` |          | Дата окончания РК                                |
-| `inn_contractor`  | `string` | (or_1)   | ИНН юр.лица РК                                   |
-| `kpp_contractor`  | `string` |          | КПП юр.лица РК                                   |
-| `uuid_contractor` | `string` | (or_1)   | Уникальный идентификатор юр.лица РК              |
-| `inn_finaladv`    | `string` | (or_2)   | ИНН конечного рекламодателя                      |
-| `kpp_finaladv`    | `string` |          | КПП конечного рекламодателя                      |
-| `uuid_finaladv`   | `string` | (or_2)   | Уникальный идентификатор конечного рекламодателя |
-| `number_contract` | `string` | (or_3)   | Номер договора рекламодателя                     |
-| `date_contract`   | `string` | (or_3)   | Дата договора рекламодателя                      |
-| `uuid_contract`   | `string` | (or_3)   | Уникальный идентификатор договора рекламодателя  |
+| Parameter         | Type      | Required | Description                                      |
+| ----------------- | --------- | -------- | ------------------------------------------------ |
+| `uuid`            | `string`  | \*(or)   | Уникальный номер РК                              |
+| `rk_id`           | `string`  | \*(or)   | Номер РК в SAMBA                                 |
+| `date_start`      | `string`  |          | Дата начала РК                                   |
+| `date_end`        | `string`  |          | Дата окончания РК                                |
+| `advance`         | `boolean` |          | Признак аванса                                   |
+| `inn_contractor`  | `string`  | (or_1)   | ИНН юр.лица РК                                   |
+| `kpp_contractor`  | `string`  |          | КПП юр.лица РК                                   |
+| `uuid_contractor` | `string`  | (or_1)   | Уникальный идентификатор юр.лица РК              |
+| `inn_finaladv`    | `string`  | (or_2)   | ИНН конечного рекламодателя                      |
+| `kpp_finaladv`    | `string`  |          | КПП конечного рекламодателя                      |
+| `uuid_finaladv`   | `string`  | (or_2)   | Уникальный идентификатор конечного рекламодателя |
+| `number_contract` | `string`  | (or_3)   | Номер договора рекламодателя                     |
+| `date_contract`   | `string`  | (or_3)   | Дата договора рекламодателя                      |
+| `uuid_contract`   | `string`  | (or_3)   | Уникальный идентификатор договора рекламодателя  |
 
 **Пример запроса JSON:**
 
@@ -690,13 +692,13 @@
 
 **Параметры JSON:**
 
-| Parameter | Type      | Required | Description                 |
-| --------- | --------- | -------- | --------------------------- |
-| `number`  | `string`  |          | Номер счета в 1С            |
-| `date`    | `string`  |          | Дата счета                  |
-| `rk_id`   | `string`  | \* (or)  | Номер РК в SAMBA            |
-| `rk_uuid` | `string`  | \* (or)  | Уникальный идентификатор РК |
-| `amount`  | `string`  | \*       | Сумма счета                 |
+| Parameter | Type     | Required | Description                 |
+| --------- | -------- | -------- | --------------------------- |
+| `number`  | `string` |          | Номер счета в 1С            |
+| `date`    | `string` |          | Дата счета                  |
+| `rk_id`   | `string` | \* (or)  | Номер РК в SAMBA            |
+| `rk_uuid` | `string` | \* (or)  | Уникальный идентификатор РК |
+| `amount`  | `string` | \*       | Сумма счета                 |
 
 **Пример запроса JSON:**
 
@@ -733,14 +735,14 @@
 
 **Параметры JSON:**
 
-| Parameter | Type      | Required | Description                         |
-| --------- | --------- | -------- | ----------------------------------- |
-| `uuid`    | `string`  |          | Уникальный идентификатор счета в 1С |
-| `number`  | `string`  |          | Номер счета в 1С                    |
-| `date`    | `string`  |          | Дата счета                          |
-| `rk_id`   | `string`  | \* (or)  | Номер РК в SAMBA                    |
-| `rk_uuid` | `string`  | \* (or)  | Уникальный идентификатор РК         |
-| `amount`  | `string`  | \*       | Сумма счета                         |
+| Parameter | Type     | Required | Description                         |
+| --------- | -------- | -------- | ----------------------------------- |
+| `uuid`    | `string` |          | Уникальный идентификатор счета в 1С |
+| `number`  | `string` |          | Номер счета в 1С                    |
+| `date`    | `string` |          | Дата счета                          |
+| `rk_id`   | `string` | \* (or)  | Номер РК в SAMBA                    |
+| `rk_uuid` | `string` | \* (or)  | Уникальный идентификатор РК         |
+| `amount`  | `string` | \*       | Сумма счета                         |
 
 **Пример запроса JSON:**
 
