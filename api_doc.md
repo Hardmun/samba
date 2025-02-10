@@ -3,10 +3,10 @@
 ### Базовый URL
 
 PRODUCTION:
-`https://1cplatform.mitcoms.ru/Media/MF/hs/samba`
+`https://1c.ru/Media/MF/hs/samba`
 
 TEST:
-`https://1cplatform.mitcoms.ru/Dev/U_MediaFinance_for_testing/hs/samba`
+`https://1c.ru/Dev/U_MediaFinance_for_testing/hs/samba`
 
 ## Точки доступа (Endpoints)
 
