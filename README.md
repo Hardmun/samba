@@ -8,7 +8,7 @@ This document outlines the API endpoints for interacting with the **SAMBA + 1C**
 https://1cplatform.mitcoms.ru/Dev/U_MediaFinance_for_testing/hs/samba
 ```
 
-## Endpoints
+## Endpoints 1
 
 ### 1. Final Advertisers
 
